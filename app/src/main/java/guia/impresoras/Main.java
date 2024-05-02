@@ -1,30 +1,31 @@
 
 package guia.impresoras;
 
-import guia.impresoras.implementations.ImpresoraLaser;
-import guia.impresoras.implementations.ImpresoraPDF;
-import guia.impresoras.implementations.ImpresoraTinta;
-import guia.impresoras.interfaces.Impresora;
+import guia.impresoras.documentos.DocumentoImprimible;
+import guia.impresoras.documentos.DocumentoPDF;
+import guia.impresoras.impresoras.implementations.ImpresoraLaser;
+import guia.impresoras.impresoras.implementations.ImpresoraPDF;
+import guia.impresoras.impresoras.implementations.ImpresoraTinta;
 
 public class Main {
 
     public static void main(String[] args) {
-        String documento = "¡Hola, mundo! Este es un documento de prueba.";
-
+        DocumentoPDF pdf = new DocumentoPDF("DocPdf", "ESTO ES UN PDF", 12, "/path");
+        DocumentoImprimible documento = new DocumentoImprimible("Nomina", "Nomina de empleados");
         // Prueba de la impresora PDF
-        Impresora impresoraPDF = new ImpresoraPDF();
+        ImpresoraPDF impresoraPDF = new ImpresoraPDF();
         System.out.println("Impresión con la Impresora PDF:");
-        impresoraPDF.imprimir(documento);
+        impresoraPDF.imprimir(pdf);
         System.out.println();
 
         // Prueba de la impresora de Tinta
-        Impresora impresoraTinta = new ImpresoraTinta();
+        ImpresoraTinta impresoraTinta = new ImpresoraTinta();
         System.out.println("Impresión con la Impresora de Tinta:");
         impresoraTinta.imprimir(documento);
         System.out.println();
 
         // Prueba de la impresora Láser
-        Impresora impresoraLaser = new ImpresoraLaser();
+        ImpresoraLaser impresoraLaser = new ImpresoraLaser();
         System.out.println("Impresión con la Impresora Láser:");
         impresoraLaser.imprimir(documento);
     }
